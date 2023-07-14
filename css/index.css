@@ -138,3 +138,55 @@
   line-height: 30px;
   color: #1f1e1e;
 }
+
+/* Result */
+.sub-container {
+  background-color: #dbdbdbcd;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-title {
+  font-size: 18px;
+}
+
+.result-bmi {
+  font-size: 40px;
+}
+
+.result-desc {
+  margin: 10px 0 20px;
+  font-size: 15px;
+}
+
+.button-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.button-cta button {
+  font-size: 12px;
+}
+
+.list-risk {
+  list-style: none;
+  text-align: center;
+}
+
+.download-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.img {
+  width: 300px;
+  width: 100px;
+  cursor: pointer;
+  border-radius: 8px;
+}
