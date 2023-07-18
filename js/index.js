@@ -1,3 +1,4 @@
+// Objek untuk menyimpan kategori BMI dan pesan terkaitnya
 const BMI_CATEGORIES = {
   UNDERWEIGHT: 'Kekurangan berat badan',
   NORMAL: 'Normal (ideal)',
@@ -5,45 +6,46 @@ const BMI_CATEGORIES = {
   OBESITY: 'Kegemukan (Obesitas)',
 };
 
-
+// Fungsi untuk menghitung BMI berdasarkan berat badan dan tinggi badan
 const calculateBMI = (weight, height) => {
   let bmi = weight / ((height / 100) ** 2);
 
   return bmi.toFixed(1);
 };
 
+// Fungsi untuk memvalidasi input berat badan, tinggi badan, usia, dan jenis kelamin
 const validateInput = (weight, height, age, gender) => {
-  const genderErrorMessage = document.getElementById('genderErrorMessage')
-  const weightErrorMessage = document.getElementById('weightErrorMessage')
-  const ageErrorMessage = document.getElementById('ageErrorMessage')
-  const heightErrorMessage = document.getElementById('heightErrorMessage')
-  const genderType = ['Pria', 'Wanita'];
+  // Mengambil elemen error message untuk masing-masing input
+  const genderErrorMessage = document.getElementById('genderErrorMessage');
+  const weightErrorMessage = document.getElementById('weightErrorMessage');
+  const ageErrorMessage = document.getElementById('ageErrorMessage');
+  const heightErrorMessage = document.getElementById('heightErrorMessage');
 
-  // Reset error messages
+  // Mengatur pesan error menjadi kosong untuk mereset pesan error sebelumnya
   const errorMessages = document.querySelectorAll('.error-message');
   errorMessages.forEach((element) => (element.innerText = ''));
 
   let isValid = true;
 
-  // Validate gender
-  if (gender === '' || !genderType.includes(gender)) {
+  // Validasi jenis kelamin
+  if (gender === '' || !['Pria', 'Wanita'].includes(gender)) {
     genderErrorMessage.innerText = 'Pilih jenis kelamin terlebih dahulu';
     isValid = false;
   }
 
-  // Validate weight
+  // Validasi berat badan
   if (isNaN(weight) || weight <= 0) {
     weightErrorMessage.innerText = 'Berat badan harus berupa angka lebih dari 0';
     isValid = false;
   }
 
-  // Validate height
+  // Validasi tinggi badan
   if (isNaN(height) || height <= 0) {
     heightErrorMessage.innerText = 'Tinggi badan harus berupa angka lebih dari 0';
     isValid = false;
   }
 
-  // Validate age
+  // Validasi usia
   if (isNaN(age) || age <= 0) {
     ageErrorMessage.innerText = 'Umur harus berupa angka lebih dari 0';
     isValid = false;
@@ -52,37 +54,40 @@ const validateInput = (weight, height, age, gender) => {
   return isValid;
 };
 
+// Fungsi untuk mengecek status BMI berdasarkan nilai BMI dan jenis kelamin
 const checkStatus = (bmi, gender) => {
-  let status = ''
+  let status = '';
 
+  // Menentukan status BMI berdasarkan kategori dan nilai BMI
   switch (gender) {
     case 'Pria':
       if (bmi < 18.5) {
-        status = BMI_CATEGORIES.UNDERWEIGHT
+        status = BMI_CATEGORIES.UNDERWEIGHT;
       } else if (bmi >= 18.5 && bmi <= 24.9) {
-        status = BMI_CATEGORIES.NORMAL
+        status = BMI_CATEGORIES.NORMAL;
       } else if (bmi >= 25.0 && bmi <= 29.9) {
-        status = BMI_CATEGORIES.OVERWEIGHT
+        status = BMI_CATEGORIES.OVERWEIGHT;
       } else if (bmi >= 30.0) {
-        status = BMI_CATEGORIES.OBESITY
+        status = BMI_CATEGORIES.OBESITY;
       }
       break;
     case 'Wanita':
       if (bmi < 17) {
-        status = BMI_CATEGORIES.UNDERWEIGHT
+        status = BMI_CATEGORIES.UNDERWEIGHT;
       } else if (bmi >= 17 && bmi <= 23.9) {
-        status = BMI_CATEGORIES.NORMAL
+        status = BMI_CATEGORIES.NORMAL;
       } else if (bmi >= 23.0 && bmi <= 27.0) {
-        status = BMI_CATEGORIES.OVERWEIGHT
+        status = BMI_CATEGORIES.OVERWEIGHT;
       } else if (bmi > 27.0) {
-        status = BMI_CATEGORIES.OBESITY
+        status = BMI_CATEGORIES.OBESITY;
       }
       break;
   }
 
-  return status
-}
+  return status;
+};
 
+// Fungsi untuk mendapatkan deskripsi teks berdasarkan status BMI
 const getDescText = (status) => {
   if (status === BMI_CATEGORIES.UNDERWEIGHT) {
     return 'Anda memiliki berat badan kurang dari normal.';
@@ -95,6 +100,7 @@ const getDescText = (status) => {
   }
 };
 
+// Fungsi untuk mendapatkan teks saran berdasarkan status BMI
 const getSuggestionText = (status) => {
   if (status === BMI_CATEGORIES.UNDERWEIGHT) {
     return 'Jika BMI Anda berada dalam kategori ini maka Anda dianjurkan untuk menambah berat badan hingga batas normal.';
@@ -107,6 +113,7 @@ const getSuggestionText = (status) => {
   }
 };
 
+// Fungsi untuk mendapatkan teks saran gizi berdasarkan status BMI
 const getAdviceText = (status) => {
   if (status === BMI_CATEGORIES.UNDERWEIGHT) {
     return 'Perbanyak asupan makanan bergizi dan konsultasikan dengan ahli gizi untuk peningkatan berat badan.';
@@ -119,18 +126,18 @@ const getAdviceText = (status) => {
   }
 };
 
+// Fungsi untuk mendapatkan daftar penyakit berdasarkan status BMI
 const getDiseases = (status) => {
   if (status === BMI_CATEGORIES.UNDERWEIGHT) {
     return ['Anemia', 'Osteoporosis', 'Gangguan pertumbuhan', 'Gangguan reproduksi'];
   } else if (status === BMI_CATEGORIES.NORMAL) {
     return ['Tidak ada'];
-  } else if (status === BMI_CATEGORIES.OVERWEIGHT) {
-    return ['Hipertensi', 'Kolesterol tinggi', 'Jantung koroner', 'Stroke', 'Diabetes melitus', 'Kanker', 'Gangguan pernapasan', 'Gangguan reproduksi'];
-  } else if (status === BMI_CATEGORIES.OBESITY) {
+  } else if (status === BMI_CATEGORIES.OVERWEIGHT || status === BMI_CATEGORIES.OBESITY) {
     return ['Hipertensi', 'Kolesterol tinggi', 'Jantung koroner', 'Stroke', 'Diabetes melitus', 'Kanker', 'Gangguan pernapasan', 'Gangguan reproduksi'];
   }
 };
 
+// Fungsi untuk menampilkan hasil BMI, status, saran, dan risiko penyakit
 const generateDisplay = (bmi, status) => {
   const resultTitle = document.getElementById('result-title');
   resultTitle.innerText = status;
@@ -161,11 +168,13 @@ const generateDisplay = (bmi, status) => {
     riskList.appendChild(listItem);
   });
 
-  document.getElementById('form').reset()
+  // Menyembunyikan form dan menampilkan hasil
+  document.getElementById('form').reset();
   document.getElementById('result').classList.remove('d-hidden');
   document.getElementById('home').classList.add('d-hidden');
 };
 
+// Fungsi untuk mengecek BMI dan menampilkan hasil
 const checkBMI = () => {
   const weight = +document.getElementById('weight').value;
   const height = +document.getElementById('height').value;
@@ -183,8 +192,9 @@ const checkBMI = () => {
   document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 };
 
+// Fungsi untuk mengembalikan tampilan form
 const regenerateBMI = () => {
   document.getElementById('home').classList.remove('d-hidden');
   document.getElementById('result').classList.add('d-hidden');
   document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
-}
+};
