@@ -26,6 +26,7 @@
             <label for="male">Pria</label>
             <input type="radio" name="gender" id="female" value="Wanita" class="form-input-check">
             <label for="female">Wanita</label>
+            <span id="genderErrorMessage" class="error-message"></span>
           </div>
           <div>
             <label class="form-label" for="weight">Berat Badan</label>
@@ -36,6 +37,7 @@
               <input type="number" name="weight" id="weight" class="form-input" min="1">
               <span class="input-group-desc">Kg</span>
             </div>
+            <span id="weightErrorMessage" class="error-message"></span>
           </div>
           <div>
             <label class="form-label" for="age">Umur</label>
@@ -46,6 +48,7 @@
               <input type="number" name="age" id="age" class="form-input" min="1">
               <span class="input-group-desc">Tahun</span>
             </div>
+            <span id="ageErrorMessage" class="error-message"></span>
           </div>
           <div>
             <label class="form-label" for="height">Tinggi Badan</label>
@@ -56,6 +59,7 @@
               <input type="number" name="height" id="height" class="form-input" min="1">
               <span class="input-group-desc">Cm</span>
             </div>
+            <span id="heightErrorMessage" class="error-message"></span>
           </div>
           <div>
             <button type="button" class="btn" onclick="checkBMI()">Hitung BMI</button>

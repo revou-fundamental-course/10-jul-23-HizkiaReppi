@@ -68,6 +68,12 @@
   display: none;
 }
 
+.error-message {
+  color: #ff0000;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
 /* Home */
 .form {
   background-color: #dbdbdbcd;

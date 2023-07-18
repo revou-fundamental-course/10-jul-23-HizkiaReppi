@@ -13,20 +13,43 @@ const calculateBMI = (weight, height) => {
 };
 
 const validateInput = (weight, height, age, gender) => {
+  const genderErrorMessage = document.getElementById('genderErrorMessage')
+  const weightErrorMessage = document.getElementById('weightErrorMessage')
+  const ageErrorMessage = document.getElementById('ageErrorMessage')
+  const heightErrorMessage = document.getElementById('heightErrorMessage')
   const genderType = ['Pria', 'Wanita'];
 
-  if (weight <= 0 || height <= 0 || age <= 0) {
-    alert('Input tidak boleh bernilai 0 atau kurang dari 0');
-    return false;
-  } else if (isNaN(weight) || isNaN(height) || isNaN(age)) {
-    alert('Input tidak boleh huruf atau simbol');
-    return false;
-  } else if (gender === '' && !genderType.includes(gender)) {
-    alert('Pilih jenis kelamin terlebih dahulu');
-    return false;
+  // Reset error messages
+  const errorMessages = document.querySelectorAll('.error-message');
+  errorMessages.forEach((element) => (element.innerText = ''));
+
+  let isValid = true;
+
+  // Validate gender
+  if (gender === '' || !genderType.includes(gender)) {
+    genderErrorMessage.innerText = 'Pilih jenis kelamin terlebih dahulu';
+    isValid = false;
   }
 
-  return true;
+  // Validate weight
+  if (isNaN(weight) || weight <= 0) {
+    weightErrorMessage.innerText = 'Berat badan harus berupa angka lebih dari 0';
+    isValid = false;
+  }
+
+  // Validate height
+  if (isNaN(height) || height <= 0) {
+    heightErrorMessage.innerText = 'Tinggi badan harus berupa angka lebih dari 0';
+    isValid = false;
+  }
+
+  // Validate age
+  if (isNaN(age) || age <= 0) {
+    ageErrorMessage.innerText = 'Umur harus berupa angka lebih dari 0';
+    isValid = false;
+  }
+
+  return isValid;
 };
 
 const checkStatus = (bmi, gender) => {
