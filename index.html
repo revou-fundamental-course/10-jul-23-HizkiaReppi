@@ -19,12 +19,12 @@
           Yuk, hitung sekarang di kalkulator BMI. </p>
       </div>
       <div>
-        <form class="form">
+        <form id="form" class="form">
           <div>
             <label class="form-label" for="gender">Jenis Kelamin</label>
-            <input type="radio" name="gender" id="male" value="Pria" class=".form-input-check">
+            <input type="radio" name="gender" id="male" value="Pria" class="form-input-check" checked>
             <label for="male">Pria</label>
-            <input type="radio" name="gender" id="female" value="Wanita" class=".form-input-check">
+            <input type="radio" name="gender" id="female" value="Wanita" class="form-input-check">
             <label for="female">Wanita</label>
           </div>
           <div>
@@ -58,7 +58,7 @@
             </div>
           </div>
           <div>
-            <button type="button" class="btn" onclick="calculateBMI()">Hitung BMI</button>
+            <button type="button" class="btn" onclick="checkBMI()">Hitung BMI</button>
             <button type="reset" class="btn btn-reset">Reset</button>
           </div>
         </form>
@@ -77,32 +77,29 @@
       </div>
     </section>
 
-    <section id="result" class="container">
+    <section id="result" class="container d-hidden">
       <h2 class="title">Hasil</h2>
       <div class="sub-container mb-1">
-        <h3 class="result-title">Berat Badan Lebih</h3>
-        <div class="result-bmi">24.7</div>
-        <p class="result-desc">Anda memiliki berat badan berlebih</p>
+        <h3 id="result-title" class="result-title"></h3>
+        <div id="result-bmi" class="result-bmi"></div>
+        <p id="result-desc" class="result-desc"></p>
         <button class="btn">Download Hasil BMI</button>
       </div>
       <div class="mb-1 paragraph">
-        <p>Hasil BMI diantara 23 dan 25</p>
-        <p>Cara terbaik untuk menurunkan berat badan adalah dengan mengatur kalori makanan yang dikonsumsi dan berolahraga.</p>
-        <p>Jika BMI Anda berada dalam kategori ini maka Anda dianjurkan untuk menurunkan berat badan hingga batas normal.</p>
+        <p id="result-text"></p>
+        <p id="suggestion-text"></p>
+        <p id="advice-text"></p>
         <div class="button-cta">
           <button class="btn">Konsultasi Ahli Gizi Via Aplikasi</button>
           <button class="btn">Registrasi Online Ahli Gizi</button>
         </div>
-        <p>BMI tidak sepenuhnya mewakili diagnosis menyeluruh dari kesehatan tubuh dan resiko penyakit seseorang, Anda perlu konsultasi lebih lanjut mengenai resiko dan kekhawatiran Anda terkait dengan berat badan Anda.</p>
+        <p>
+          BMI tidak sepenuhnya mewakili diagnosis menyeluruh dari kesehatan tubuh dan resiko penyakit seseorang, Anda perlu konsultasi lebih lanjut mengenai resiko dan kekhawatiran Anda terkait dengan berat badan Anda.
+        </p>
       </div>
       <div class="sub-container paragraph">
-        <h6>Beberapa penyakit yang berasal dari kegemukan</h6>
-        <ul class="list-risk">
-          <li>Diabetes</li>
-          <li>Hipertensi</li>
-          <li>Sakit Jantung</li>
-          <li>Osteoarthritis</li>
-        </ul>
+        <h6 id="risk-title"></h6>
+        <ul id="list-risk" class="list-risk"></ul>
         <div class="button-cta">
           <button class="btn">Konsultasi Dokter Via Aplikasi</button>
           <button class="btn">Registrasi Online Sekarang</button>
@@ -114,6 +111,9 @@
           <img src="./img/google-play.png" alt="Google Play" class="img">
           <img src="./img/apple-store.jpg" alt="Apple Store" class="img">
         </div>
+      </div>
+      <div>
+        <button class="btn" onclick="regenerateBMI()">Hitung Lagi</button>
       </div>
     </section>
   </main>

@@ -7,12 +7,13 @@
   font-size: medium;
   font-weight: normal;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  margin: 10px 5%;
+  margin: 10px 5% 20px;
 }
 
 .title {
@@ -61,6 +62,10 @@
 
 .btn-reset:hover {
   background-color: #c3c2c2;
+}
+
+.d-hidden {
+  display: none;
 }
 
 /* Home */
