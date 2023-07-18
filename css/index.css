@@ -1,21 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Global styles */
+:root {
+  --font-family: 'Poppins', sans-serif;
+  --primary-color: #1e9c9c;
+  --secondary-color: #c3c2c2;
+  --error-color: #ff0000;
+  --base-font-size: medium;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: medium;
+  font-size: var(--base-font-size);
   font-weight: normal;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-family);
   scroll-behavior: smooth;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 5% 20px;
-}
-
+/* Common styles */
 .title {
   font-size: 25px;
   margin: 10px 0;
@@ -43,11 +47,11 @@
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-  background-color: #1e9c9c;
+  background-color: var(--primary-color);
   color: white;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color .3s ease-in-out
+  transition: background-color .3s ease-in-out;
 }
 
 .btn:hover {
@@ -69,12 +73,16 @@
 }
 
 .error-message {
-  color: #ff0000;
+  color: var(--error-color);
   font-size: 13px;
   margin-top: 5px;
 }
 
-/* Home */
+/* Home styles */
+.container {
+  margin: 30px 5%;
+}
+
 .form {
   background-color: #dbdbdbcd;
   padding: 20px;
@@ -100,7 +108,7 @@
   color: black;
   background-color: white;
   background-clip: padding-box;
-  border: 1px solid #c3c2c2;
+  border: 1px solid var(--secondary-color);
   appearance: none;
 }
 
@@ -119,7 +127,8 @@
   min-width: 0;
 }
 
-.form .input-group-desc, .input-group-icon {
+.form .input-group-desc,
+.form .input-group-icon {
   display: flex;
   align-items: center;
   padding: 0.375rem 0.75rem;
@@ -133,14 +142,14 @@
 }
 
 .form .input-group-desc {
-  background-color: #1e9c9c;
-  border-color: #1e9c9c;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   border-radius: 0 5px 5px 0;
 }
 
 .form .input-group-icon {
-  background-color: #c3c2c2;
-  border-color: #c3c2c2;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   border-radius: 5px 0 0 5px;
 }
 
@@ -150,7 +159,7 @@
   color: #1f1e1e;
 }
 
-/* Result */
+/* Result styles */
 .sub-container {
   background-color: #dbdbdbcd;
   padding: 20px 0;
