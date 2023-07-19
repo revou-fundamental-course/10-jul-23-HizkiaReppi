@@ -129,11 +129,13 @@ const getAdviceText = (status) => {
 // Fungsi untuk mendapatkan daftar penyakit berdasarkan status BMI
 const getDiseases = (status) => {
   if (status === BMI_CATEGORIES.UNDERWEIGHT) {
-    return ['Anemia', 'Osteoporosis', 'Gangguan pertumbuhan', 'Gangguan reproduksi'];
+    return ['Kekurangan gizi', 'Gangguan pertumbuhan', 'Sistem kekebalan tubuh lemah', 'Gangguan kesuburan'];
   } else if (status === BMI_CATEGORIES.NORMAL) {
     return ['Tidak ada'];
-  } else if (status === BMI_CATEGORIES.OVERWEIGHT || status === BMI_CATEGORIES.OBESITY) {
-    return ['Hipertensi', 'Kolesterol tinggi', 'Jantung koroner', 'Stroke', 'Diabetes melitus', 'Kanker', 'Gangguan pernapasan', 'Gangguan reproduksi'];
+  } else if (status === BMI_CATEGORIES.OVERWEIGHT) {
+    return ['Diabetes Tipe 2', 'Serangan Jantung', 'Hipertensi', 'Gastroesophageal Reflux Disease', 'Osteoarthritis', 'Kanker', 'Kolesterol Tinggi'];
+  } else if (status === BMI_CATEGORIES.OBESITY) {
+    return ['Penyakit Jantung', 'Stroke', 'Kanker', 'Masalah Pencernaan', 'Sleep Apnea', 'Osteoartritis']
   }
 };
 
@@ -198,3 +200,10 @@ const regenerateBMI = () => {
   document.getElementById('result').classList.add('d-hidden');
   document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
 };
+
+/**
+ * Sumber:
+ * Resiko Penyakit Kekurangan Berat Badan: https://www.alodokter.com/faktor-penyebab-badan-kurus-dan-tips-sehat-untuk-mengatasinya/ Diakses pada 18 July 2023
+ * Resiko Penyakit Kelebihan Berat Badan: https://health.detik.com/diet/d-4771038/7-penyakit-ini-bersembunyi-di-balik-berat-badan-berlebih/ Diakses pada 18 July 2023
+ * Resiko Penyakit Obesitas: https://www.halodoc.com/kesehatan/obesitas/  Diakses pada 18 July 2023
+ */
